@@ -1,4 +1,12 @@
-appname("Electrification Configuration Decision Matrix")
+requirements.txt
+
+stramlit
+pandas
+
+import streamlit as st
+import pandas as pd
+
+st.title("Electrification Configuration Decision Matrix")
 
 markdown("""
 This app uses a Multi-Criteria Decision-Making (MCDM) approach to evaluate three alternatives:
