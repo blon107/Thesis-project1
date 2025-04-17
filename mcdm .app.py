@@ -1,6 +1,3 @@
-requirements.txt
-stramlit
-pandas
 import streamlit as st
 import pandas as pd
 
