@@ -1,13 +1,3 @@
-requirements.txt
-
-stramlit
-pandas
-streamlit/config.toml
-[server]
-headless = true
-enableCORS = false
-port = PORT
-
 import streamlit as st
 import pandas as pd
 
