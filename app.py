@@ -2,7 +2,7 @@ requirements.txt
 
 stramlit
 pandas
-.streamlit/config.toml
+streamlit/config.toml
 [server]
 headless = true
 enableCORS = false
