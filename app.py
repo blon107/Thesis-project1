@@ -3,7 +3,7 @@ import pandas as pd
 
 st.title("Electrification Configuration Decision Matrix")
 
-markdown("""
+st.markdown("""
 This app uses a Multi-Criteria Decision-Making (MCDM) approach to evaluate three alternatives:
 - **A1: Battery-Electric**
 - **A2: Hybrid-Electric**
@@ -12,8 +12,8 @@ This app uses a Multi-Criteria Decision-Making (MCDM) approach to evaluate three
 Adjust the criteria weights and the scores for each alternative. The weighted sum model (WSM) will then calculate the overall score for each option.
 """)
 
-markdown("## 1. Input Criteria Weights")
-markdown("The total weight should sum to 1. (For example: CAPEX = 0.25, OPEX = 0.20, Efficiency = 0.30, Integration Complexity = 0.10, Vessel Type = 0.10, Regulatory Impact = 0.05)")
+st.markdown("## 1. Input Criteria Weights")
+st.markdown("The total weight should sum to 1. (For example: CAPEX = 0.25, OPEX = 0.20, Efficiency = 0.30, Integration Complexity = 0.10, Vessel Type = 0.10, Regulatory Impact = 0.05)")
 
 capex_weight = st.number_input("CAPEX Weight", min_value=0.0, max_value=1.0, value=0.25, step=0.01)
 opex_weight = st.number_input("OPEX Weight", min_value=0.0, max_value=1.0, value=0.20, step=0.01)
