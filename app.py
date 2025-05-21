@@ -67,9 +67,9 @@ with st.expander("Hydrogen Fuel Cell (A3)"):
         st.slider("A3 – CAPEX", 1.0, 10.0, 3.0, 0.5, key="a3_capex"),
         st.slider("A3 – OPEX",  1.0, 10.0, 5.0, 0.5, key="a3_opex"),
         st.slider("A3 – Efficiency", 1.0, 10.0, 6.0, 0.5, key="a3_eff"),
-        st.slider("A3 – Integration", 1.0, 10.0, 5.0, 0.5, key="a3_int"), # Fixed: Added step parameter
-        st.slider("A3 – Vessel Suitability", 1.0, 10.0, 7.0, 0.5, key="a3_vess"), # Fixed: Added step parameter
-        st.slider("A3 – Regulation", 1.0, 10.0, 9.0, 0.5, key="a3_reg") # Fixed: Added step parameter
+        st.slider("A3 – Integration", 1.0, 10.0, 5.0, 0.5, key="a3_int"),
+        st.slider("A3 – Vessel Suitability", 1.0, 10.0, 7.0, 0.5, key="a3_vess"),
+        st.slider("A3 – Regulation", 1.0, 10.0, 9.0, 0.5, key="a3_reg")
     ]
 
 if st.button("Calculate Results"):
@@ -98,7 +98,25 @@ if st.button("Calculate Results"):
         "Best_Score": best["Score"],
         "A1_Score": A1_score,
         "A2_Score": A2_score,
-        "A3_Score": A3_score
+        "A3_Score": A3_score,
+        "A1_CAPEX_Score": a1[0], # Storing individual scores
+        "A1_OPEX_Score": a1[1],
+        "A1_Efficiency_Score": a1[2],
+        "A1_Integration_Score": a1[3],
+        "A1_Vessel_Suitability_Score": a1[4],
+        "A1_Regulation_Score": a1[5],
+        "A2_CAPEX_Score": a2[0],
+        "A2_OPEX_Score": a2[1],
+        "A2_Efficiency_Score": a2[2],
+        "A2_Integration_Score": a2[3],
+        "A2_Vessel_Suitability_Score": a2[4],
+        "A2_Regulation_Score": a2[5],
+        "A3_CAPEX_Score": a3[0],
+        "A3_OPEX_Score": a3[1],
+        "A3_Efficiency_Score": a3[2],
+        "A3_Integration_Score": a3[3],
+        "A3_Vessel_Suitability_Score": a3[4],
+        "A3_Regulation_Score": a3[5],
     }
 
     # Update counts
@@ -130,11 +148,13 @@ if st.button("Calculate Results"):
 if st.checkbox("Show All Entries"):
     if os.path.exists("wsm_results.csv"):
         history = pd.read_csv("wsm_results.csv")
-        st.markdown("### Full Entry History")
+        st.markdown("### Full Entry History (Detailed Scoring)")
+        # Display the history with all columns, including detailed scores
         st.dataframe(history)
-        # Chart best scores by stakeholder
+
+        # Chart best scores by stakeholder (can keep this as it is or modify)
+        st.markdown("### Best Scores by Stakeholder (Bar Chart)")
         chart = history.pivot(index="Entry No", columns="Stakeholder", values="Best_Score")
         st.bar_chart(chart)
     else:
         st.warning("No entries saved yet.")
-
