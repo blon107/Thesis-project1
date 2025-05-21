@@ -110,10 +110,14 @@ if st.button("Calculate Results", disabled=not calculate_enabled):
         counts = pd.read_csv(CNT_FILE)
     else:
         counts = pd.DataFrame(columns=["Stakeholder", "Count"])
+
     if stakeholder in counts.Stakeholder.values:
         counts.loc[counts.Stakeholder == stakeholder, "Count"] += 1
     else:
-        counts = counts.append({"Stakeholder": stakeholder, "Count": 1}, ignore_index=True)
+        # FIX: Replace deprecated .append() with pd.concat()
+        new_row = pd.DataFrame([{"Stakeholder": stakeholder, "Count": 1}])
+        counts = pd.concat([counts, new_row], ignore_index=True)
+
     counts.to_csv(CNT_FILE, index=False)
     entry_no = int(counts.loc[counts.Stakeholder == stakeholder, "Count"].iloc[0])
     entry["Entry No"] = entry_no
@@ -144,7 +148,9 @@ if st.checkbox("Show All Entries (Detailed Breakdown & Charts)"):
 
         st.markdown("---")
         st.markdown("### Analytical Breakdown of Individual Criteria Scores")
-        detailed = [c for c in history.columns 
+        st.markdown("Select a specific score to see its trend across entries.")
+
+        detailed = [c for c in history.columns
                     if "_Score" in c and "Overall_Score" not in c and "Best_Score" not in c]
         if detailed:
             choice = st.selectbox("Select score to chart:", detailed)
