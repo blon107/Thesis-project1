@@ -41,33 +41,35 @@ if abs(total_w - 1) > 0.01:
     st.warning("Weights must sum to 1.")
 
 # 3. Scores via Sliders (0.5 increments)
-st.markdown("## Input Scores (0–10, step 0.5)")
+st.markdown("## Input Scores (1–10, step 0.5)")
+st.markdown("**Note:** Scores represent impact on the project, where **1 is negative impact** and **10 is positive impact**.")
+
 with st.expander("Battery-Electric (A1)"):
     a1 = [
-        st.slider("A1 – CAPEX", 0.0, 10.0, 7.0, 0.5, key="a1_capex"),
-        st.slider("A1 – OPEX",  0.0, 10.0, 8.0, 0.5, key="a1_opex"),
-        st.slider("A1 – Efficiency", 0.0, 10.0, 9.0, 0.5, key="a1_eff"),
-        st.slider("A1 – Integration", 0.0, 10.0, 6.0, 0.5, key="a1_int"),
-        st.slider("A1 – Vessel Suitability", 0.0, 10.0, 6.0, 0.5, key="a1_vess"),
-        st.slider("A1 – Regulation", 0.0, 10.0, 8.0, 0.5, key="a1_reg")
+        st.slider("A1 – CAPEX", 1.0, 10.0, 7.0, 0.5, key="a1_capex"),
+        st.slider("A1 – OPEX",  1.0, 10.0, 8.0, 0.5, key="a1_opex"),
+        st.slider("A1 – Efficiency", 1.0, 10.0, 9.0, 0.5, key="a1_eff"),
+        st.slider("A1 – Integration", 1.0, 10.0, 6.0, 0.5, key="a1_int"),
+        st.slider("A1 – Vessel Suitability", 1.0, 10.0, 6.0, 0.5, key="a1_vess"),
+        st.slider("A1 – Regulation", 1.0, 10.0, 8.0, 0.5, key="a1_reg")
     ]
 with st.expander("Hybrid-Electric (A2)"):
     a2 = [
-        st.slider("A2 – CAPEX", 0.0, 10.0, 5.0, 0.5, key="a2_capex"),
-        st.slider("A2 – OPEX",  0.0, 10.0, 6.0, 0.5, key="a2_opex"),
-        st.slider("A2 – Efficiency", 0.0, 10.0, 7.0, 0.5, key="a2_eff"),
-        st.slider("A2 – Integration", 0.0, 10.0, 7.0, 0.5, key="a2_int"),
-        st.slider("A2 – Vessel Suitability", 0.0, 10.0, 8.0, 0.5, key="a2_vess"),
-        st.slider("A2 – Regulation", 0.0, 10.0, 7.0, 0.5, key="a2_reg")
+        st.slider("A2 – CAPEX", 1.0, 10.0, 5.0, 0.5, key="a2_capex"),
+        st.slider("A2 – OPEX",  1.0, 10.0, 6.0, 0.5, key="a2_opex"),
+        st.slider("A2 – Efficiency", 1.0, 10.0, 7.0, 0.5, key="a2_eff"),
+        st.slider("A2 – Integration", 1.0, 10.0, 7.0, 0.5, key="a2_int"),
+        st.slider("A2 – Vessel Suitability", 1.0, 10.0, 8.0, 0.5, key="a2_vess"),
+        st.slider("A2 – Regulation", 1.0, 10.0, 7.0, 0.5, key="a2_reg")
     ]
 with st.expander("Hydrogen Fuel Cell (A3)"):
     a3 = [
-        st.slider("A3 – CAPEX", 0.0, 10.0, 3.0, 0.5, key="a3_capex"),
-        st.slider("A3 – OPEX",  0.0, 10.0, 5.0, 0.5, key="a3_opex"),
-        st.slider("A3 – Efficiency", 0.0, 10.0, 6.0, 0.5, key="a3_eff"),
-        st.slider("A3 – Integration", 0.0, 10.0, 5.0, key="a3_int"),
-        st.slider("A3 – Vessel Suitability", 0.0, 10.0, 7.0, key="a3_vess"),
-        st.slider("A3 – Regulation", 0.0, 10.0, 9.0, key="a3_reg")
+        st.slider("A3 – CAPEX", 1.0, 10.0, 3.0, 0.5, key="a3_capex"),
+        st.slider("A3 – OPEX",  1.0, 10.0, 5.0, 0.5, key="a3_opex"),
+        st.slider("A3 – Efficiency", 1.0, 10.0, 6.0, 0.5, key="a3_eff"),
+        st.slider("A3 – Integration", 1.0, 10.0, 5.0, 0.5, key="a3_int"), # Fixed: Added step parameter
+        st.slider("A3 – Vessel Suitability", 1.0, 10.0, 7.0, 0.5, key="a3_vess"), # Fixed: Added step parameter
+        st.slider("A3 – Regulation", 1.0, 10.0, 9.0, 0.5, key="a3_reg") # Fixed: Added step parameter
     ]
 
 if st.button("Calculate Results"):
